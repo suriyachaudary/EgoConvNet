@@ -1,0 +1,16 @@
+take cup 19 55 
+take water 66 89 
+open water 93 111 
+pour water,cup 129 231 
+close water 247 260 
+take tea 277 304 
+open tea 381 468 
+shake tea,cup 506 678 
+take sugar 707 744 
+take spoon 753 787 
+open sugar 808 842 
+scoop sugar,spoon,cup 864 930 
+stir cup 931 975 
+close sugar 989 1024 
+stir spoon,cup 1051 1127 
+

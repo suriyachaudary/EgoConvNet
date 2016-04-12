@@ -1,0 +1,7 @@
+/home/suriya/png/S2_Cheese_C1
+/home/suriya/png/S2_Coffee_C1
+/home/suriya/png/S2_CofHoney_C1
+/home/suriya/png/S2_Hotdog_C1
+/home/suriya/png/S2_Pealate_C1
+/home/suriya/png/S2_Peanut_C1
+/home/suriya/png/S2_Tea_C1

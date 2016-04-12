@@ -1,0 +1,13 @@
+take bread 23 54 
+take hotdog 74 128 
+put hotdog,bread 129 149 
+take mustard 171 197 
+open mustard 227 282 
+pour mustard,hotdog,bread 290 341 
+close mustard 347 367 
+take ketchup 376 396 
+open ketchup 418 454 
+pour ketchup,hotdog,bread 458 511 
+close ketchup 513 532 
+fold bread 559 644 
+

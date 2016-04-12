@@ -1,0 +1,5 @@
+cmake_minimum_required(VERSION 2.8)
+project( videostab )
+find_package( OpenCV REQUIRED )
+add_executable( videostab videostab.cpp )
+target_link_libraries( videostab ${OpenCV_LIBS} )
