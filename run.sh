@@ -7,6 +7,11 @@ sh pre_processing.sh ~/png ~/cvpr2016codes/png_stab/ ~/cvpr2016codes/frame_lists
 echo
 echo "Create training and testing windows from frame lists"
 mkdir windows_frame_lists
+
+cd preprocessing
+g++ prepare_sliding_windows_from_frame_lists.cpp -o prepare_sliding_windows_from_frame_lists
+cd ..
+
 ./preprocessing/prepare_sliding_windows_from_frame_lists train_videos.txt /home/suriya/cvpr2016codes/datasets/gtea/labels/ /home/suriya/cvpr2016codes/frame_lists/ /home/suriya/cvpr2016codes/windows_frame_lists/ /home/suriya/cvpr2016codes/png_stab/ train_windows.txt
 ./preprocessing/prepare_sliding_windows_from_frame_lists test_videos.txt /home/suriya/cvpr2016codes/datasets/gtea/labels/ /home/suriya/cvpr2016codes/frame_lists/ /home/suriya/cvpr2016codes/windows_frame_lists/ /home/suriya/cvpr2016codes/png_stab/ test_windows.txt
 
