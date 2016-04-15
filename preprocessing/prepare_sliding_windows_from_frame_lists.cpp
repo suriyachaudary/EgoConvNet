@@ -1,7 +1,7 @@
 #include<stdio.h>
 #include<string.h>
 #include <cstdlib>
-#define SLIDING_SIZE 5
+#define SLIDING_SIZE 30
 
 char classes[11][20]={"close","pour","open","spread","scoop","take","fold", "shake", "put","stir","x"};
 int get_label(char *a)
@@ -37,8 +37,6 @@ int main(int argc, char *argv[])
 		char video_name[300];
 		fscanf(fp_video, "%s", video_name);
 
-		if(feof(fp_video))
-			break; 
 		
 		printf("%s\n", video_name);
 
@@ -73,6 +71,9 @@ int main(int argc, char *argv[])
 					
 				char frame[300];
 				fscanf(fp_frame_list,"%s",frame);
+				
+				
+
 				fprintf(fp_dense_annotations, "%s/%s_%s_%010d 10\n", argv[4],video_name, "x", current_frame);
 				fprintf(stdout, "%s/%s_%s_%010d 10\n", argv[4],video_name, "x", current_frame);
 				char output_file[300];
@@ -111,6 +112,8 @@ int main(int argc, char *argv[])
 				
 				char frame[300];
 				fscanf(fp_frame_list,"%s",frame);
+
+				
 				fprintf(fp_dense_annotations, "%s/%s_%s_%010d %d\n", argv[4],video_name, action, current_frame,get_label(action));
 				fprintf(stdout, "%s/%s_%s_%010d %d\n", argv[4],video_name, action, current_frame,get_label(action));
 				char output_file[300];
@@ -149,6 +152,8 @@ int main(int argc, char *argv[])
 			char frame[300];
 
 			fscanf(fp_frame_list,"%s",frame);
+
+			
 				
 			fprintf(fp_dense_annotations, "%s/%s_%s_%010d 10\n", argv[4],video_name, "x", current_frame);
 			fprintf(stdout, "%s/%s_%s_%010d 10\n", argv[4],video_name, "x", current_frame);

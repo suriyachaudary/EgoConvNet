@@ -26,3 +26,14 @@ mkdir idt_features
 
 cd ego_tdd;
 /usr/local/matlab2013b//bin/matlab -nodisplay -r 'gtea, exit()' 2>tdd_log.txt
+
+
+echo 
+echo "Computing improved Fisher Vector"
+/usr/local/matlab2013b//bin/matlab -nodisplay -r 'compute_fisher_vector, exit()'
+
+echo 
+echo "Classify GTEA"
+/usr/local/matlab2013b//bin/matlab -nodisplay -r 'gtea_classify, exit()'
+
+/usr/local/matlab2013b//bin/matlab -nodisplay -r 'train_test, exit()'
