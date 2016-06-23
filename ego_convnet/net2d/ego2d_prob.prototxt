@@ -7,9 +7,9 @@ layer {
   top: "label"
 
   data_param {
-    source: "/akashic/suriya/caffe/caffe-master/build/tools/test_mask_cam_attention_inorder2"
-    batch_size: 1
-    backend: LEVELDB
+    source: "/home/suriya/cnn/db/mask/test_mask_5"
+    batch_size: 8147
+    backend: LMDB
   }
   transform_param {
   scale: 0.0039215684
