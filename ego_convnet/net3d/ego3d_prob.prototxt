@@ -1,0 +1,187 @@
+name: "CaffeNet"
+
+layers {
+  name: "data"
+  type: DATA
+  top: "data"
+  top: "label"
+  
+
+  data_param {
+    source: "/akashic/suriya/caffe/caffe-master/build/tools/test_mask_cam_attention_inorder"
+    batch_size: 8147
+    #backend: LMDB
+    scale: 0.0039215684
+  }
+}
+
+
+
+
+layers {
+  name: "conv1a"
+  type: CONVOLUTION3D
+  bottom: "data"
+  top: "conv1a"
+  blobs_lr: 1
+  blobs_lr: 2
+  convolution_param {
+    num_output: 32
+    kernel_size: 5
+    kernel_depth: 4
+    pad: 2
+    temporal_pad: 1
+    stride: 1
+    weight_filler {
+      type: "gaussian"
+      std: 0.0001
+    }
+    bias_filler {
+      type: "constant"
+    }
+  }
+}
+layers {
+  name: "relu1a"
+  type: RELU
+  bottom: "conv1a"
+  top: "conv1a"
+}
+layers {
+  name: "pool1"
+  type: POOLING3D
+  bottom: "conv1a"
+  top: "pool1"
+  pooling_param {
+    pool: MAX
+    kernel_size: 5
+    kernel_depth: 1
+    stride: 2
+    temporal_stride: 2
+  }
+}
+
+layers {
+  name: "norm1"
+  type: LRN
+  bottom: "pool1"
+  top: "norm1"
+  lrn_param {
+    local_size: 5
+    alpha: 5e-05
+    beta: 0.75
+    norm_region: WITHIN_CHANNEL
+  }
+}
+
+# ------------- 2nd layer group --------------
+layers {
+  name: "conv2a"
+  type: CONVOLUTION3D
+  bottom: "norm1"
+  top: "conv2a"
+  blobs_lr: 1
+  blobs_lr: 2
+  convolution_param {
+    num_output: 128
+    kernel_size: 5
+    kernel_depth: 4
+    stride: 1
+    pad: 2
+    temporal_pad: 1
+    weight_filler {
+      type: "gaussian"
+      std: 0.01
+    }
+    bias_filler {
+      type: "constant"
+    }
+  }
+}
+layers {
+  name: "relu2a"
+  type: RELU
+  bottom: "conv2a"
+  top: "conv2a"
+}
+layers {
+  name: "pool2"
+  type: POOLING3D
+  bottom: "conv2a"
+  top: "pool2"
+  pooling_param {
+    pool: AVE
+    kernel_size: 5
+    kernel_depth: 2
+    stride: 2
+    temporal_stride: 2
+  }
+}
+
+layers {
+  name: "norm2"
+  type: LRN
+  bottom: "pool2"
+  top: "norm2"
+  lrn_param {
+    local_size: 5
+    alpha: 5e-05
+    beta: 0.75
+    norm_region: WITHIN_CHANNEL
+  }
+}
+
+layers {
+  name: "ip1"
+  type: INNER_PRODUCT
+  bottom: "norm2"
+  top: "ip1"
+  
+    blobs_lr: 1
+  
+    blobs_lr: 2
+  
+  inner_product_param {
+    num_output: 512
+    weight_filler {
+      type: "gaussian"
+      std: 0.1
+    }
+    bias_filler {
+      type: "constant"
+    }
+  }
+}
+
+
+
+
+layers {
+  name: "ip2"
+  type: INNER_PRODUCT
+  bottom: "ip1"
+  top: "ip2"
+  
+    blobs_lr: 1
+ 
+    blobs_lr: 2
+  
+  inner_product_param {
+    num_output: 11
+    weight_filler {
+      type: "gaussian"
+      std: 0.1
+    }
+    bias_filler {
+      type: "constant"
+    }
+  }
+}
+
+
+layers {
+ name: "prob"
+  type: SOFTMAX
+  bottom: "ip2"
+ top: "prob"
+}
