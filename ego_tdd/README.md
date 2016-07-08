@@ -1,13 +1,8 @@
 # Trajectory-Pooled Deep-Convolutional Descriptors
-Here we provide the code for the extraction of Trajectory-Pooled Deep-Convolutional Descriptors (TDD), from the following paper:
+Here we use the modified code for the extraction of Trajectory-Pooled Deep-Convolutional Descriptors (TDD), from the following paper:
 
     Action Recognition with Trajectory-Pooled Deep-Convolutional Descriptors
     Limin Wang, Yu Qiao, and Xiaou Tang, in CVPR, 2015
-### Updates
-- Dec 24, 2015
-  * Release the second version of TDD (branch: cudnn2.0) compatible with latest [caffe toolbox](https://github.com/yjxiong/caffe). Due to speedup brought by cudnn2.0 or above, TDD extraction is becoming more efficient.
-- Jul 21, 2015
-  * Release the first version TDD (branch: master) compatible with an older version of [caffe toolbox](https://github.com/wanglimin/caffe).
 
 ### Two-stream CNN models trained on the UCF101 dataset
 First, we provide our trained two-stream CNN models on the split1 of UCF101 dataset, which achieve the recognition accuracy of 84.7%
@@ -32,7 +27,6 @@ You need download the public caffe toolbox. Our TDD code is compatatible with th
 Now you can run the matlab file "script_demo.m" to extract TDD features.
 
 
-### Questions
-Contact 
+### Original Author
 - [Limin Wang](http://wanglimin.github.io/)
 
